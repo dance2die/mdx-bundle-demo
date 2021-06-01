@@ -1,8 +1,19 @@
+import Link from 'next/link';
+
 import Post from '../components/Post';
 import bundle from '../components/bundle';
 
 export default function Home({ code, frontmatter }) {
-	return <Post code={code} frontmatter={frontmatter} />;
+	return (
+		<main>
+			<ul>
+				<li>
+					<Link href="/blog">Blog</Link>
+				</li>
+			</ul>
+			<Post code={code} frontmatter={frontmatter} />
+		</main>
+	);
 }
 
 // export async function getServerSideProps(context) {
