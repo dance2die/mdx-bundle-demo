@@ -1,19 +1,21 @@
 import path from 'path';
 import fs from 'fs';
 
+import Link from 'next/link';
+
 // export function getServerSideProps() {
 export function getStaticProps() {
 	const blogDirectory = path.join(process.cwd(), 'content', 'blog');
-	const filenames = fs.readdirSync(blogDirectory);
+	const years = fs.readdirSync(blogDirectory);
 
-	console.info({ filenames });
+	console.info({ years });
 
 	return {
-		props: { cwd: process.cwd(), dirname: __dirname, blogDirectory, filenames }
+		props: { cwd: process.cwd(), dirname: __dirname, blogDirectory, years }
 	};
 }
 
-function Blog({ cwd, dirname, blogDirectory, filenames }) {
+function Blog({ cwd, dirname, blogDirectory, years }) {
 	return (
 		<div>
 			<header>
@@ -29,7 +31,13 @@ function Blog({ cwd, dirname, blogDirectory, filenames }) {
 				<div>
 					<label>blogDirectory: {blogDirectory}</label>
 				</div>
-				<ul>{filenames.map((filename) => <li key={filename}>{filename}</li>)}</ul>
+				<ul>
+					{years.map((year) => (
+						<li key={year}>
+							<Link href={`/blog/${year}`}>{year}</Link>
+						</li>
+					))}
+				</ul>
 			</main>
 		</div>
 	);
