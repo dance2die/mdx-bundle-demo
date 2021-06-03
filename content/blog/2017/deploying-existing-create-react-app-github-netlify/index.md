@@ -56,7 +56,7 @@ After clicking on the "Deploy site" button, you will be forwarded to an "Overvie
 
  
 
-After a few moments (<- this is relative term....), you will see a randomly generated URL.
+After a few moments (this is relative term....), you will see a randomly generated URL.
 
 ![](./images/Step5-Site-deployed.jpg)
 

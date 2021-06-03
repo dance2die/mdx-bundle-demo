@@ -50,7 +50,8 @@ Here is what the code does.
 
 And the `Main`  function looks as follows.
 
-public static void Main(string\[\] args)
+```csharp
+public static void Main(string[] args)
 {
 	Application word = null;
 	Document document = null;
@@ -68,7 +69,7 @@ public static void Main(string\[\] args)
 		SetSignerBookmarks(word, document.Bookmarks, signer);
 
 		// Find table and get table width (in Word, table collection is 1-based)
-		var table = document.Tables\[1\];
+		var table = document.Tables[1];
 		double tableWidth = GetTableWidth(table);
 
 		// calculate text width
@@ -84,6 +85,7 @@ public static void Main(string\[\] args)
 		word?.Quit(WdSaveOptions.wdSaveChanges, WdOriginalFormat.wdOriginalDocumentFormat);
 	}
 }
+```
 
 Now the moment of truth. The output Word file looks like the following.
 

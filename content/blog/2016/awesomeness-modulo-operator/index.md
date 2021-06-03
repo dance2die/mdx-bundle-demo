@@ -12,9 +12,11 @@ One day, I was solving a coding question, for which, I had to shift each element
 I've never much utilized an operator for modulo except when I had to check for "even" or "odd" numbers.
 
 // right shift with modulus
+```
 for (int i = 0; i < arr.length; i++) {
-demo\[(i+1) % demo.length\] = arr\[i\];
+demo[(i+1) % demo.length] = arr[i];
 }
+```
 
 The code snippet above is an [answer](https://stackoverflow.com/a/21385230/4035) by [Artemkller545](https://stackoverflow.com/users/3123545/artemkller545) to this question, [shifting array elements to right?](https://stackoverflow.com/questions/21385066/shifting-array-elements-to-right/21385230#21385230) on StackOverflow. An example of shifting each element array to right would be
 

@@ -27,32 +27,33 @@ E.g.) If you search for a word "_long_" in "_This is a long text to be searched
 
 **Note**: Don't try to understand the code. Just skim through and imagine how hard it'd be to update the code.
 
+```csharp
 private static int GetIndexAfterFoundWord(string text, string searchWord)
 {
 	// Build Prefix KMP Table
 	int j = 0;
 	int i = j + 1;
-	int\[\] T = Enumerable.Repeat(0, searchWord.Length).ToArray();
-	T\[0\] = 0;
+	int[] T = Enumerable.Repeat(0, searchWord.Length).ToArray();
+	T[0] = 0;
 
 	while (i < searchWord.Length)
 	{
-		if (searchWord\[i\] == searchWord\[j\])
+		if (searchWord[i] == searchWord[j])
 		{
-			T\[i\] = j + 1;
+			T[i] = j + 1;
 			j++;
 			i++;
 		}
 		else
 		{
-			while (j >= 1 && searchWord\[j\] != searchWord\[i\])
+			while (j >= 1 && searchWord[j] != searchWord[i])
 			{
-				j = T\[j - 1\];
+				j = T[j - 1];
 				if (j == 0) break;
 			}
 
-			if (searchWord\[j\] == searchWord\[i\])
-				T\[i\] = j + 1;
+			if (searchWord[j] == searchWord[i])
+				T[i] = j + 1;
 
 			i++;
 		}
@@ -65,19 +66,19 @@ private static int GetIndexAfterFoundWord(string text, string searchWord)
 
 	while (m + wi < text.Length)
 	{
-		if (text\[m + wi\] == searchWord\[wi\])
+		if (text[m + wi] == searchWord[wi])
 		{
 			wi++;
 			if (wi == searchWord.Length)
 			{
 				found.Add(m);
-				m = m + wi - T\[wi - 1\];
-				wi = T\[wi - 1\];
+				m = m + wi - T[wi - 1];
+				wi = T[wi - 1];
 			}
 		}
 		else
 		{
-			if (T\[wi\] == 0)
+			if (T[wi] == 0)
 			{
 				m = m + wi + 1;
 				wi = 0;
@@ -85,7 +86,7 @@ private static int GetIndexAfterFoundWord(string text, string searchWord)
 			else
 			{
 				m = m + wi;
-				wi = (wi - 1) < 0 ? 0 : T\[wi - 1\];
+				wi = (wi - 1) < 0 ? 0 : T[wi - 1];
 			}
 		}
 	}
@@ -93,6 +94,7 @@ private static int GetIndexAfterFoundWord(string text, string searchWord)
 	// return the index after found word
 	return found.First() + searchWord.Length;
 }
+```
 
 It uses [Knuth-Morris-Pratt (KMP) algorithm](https://en.wikipedia.org/wiki/Knuth%2525E2%252580%252593Morris%2525E2%252580%252593Pratt_algorithm) to return found indices and simply returns found index + search word length.
 
@@ -104,12 +106,14 @@ Let's abstract table building and search code into methods by using [Extract Met
 
 Here is `GetIndexAfterFoundWord2` after the refactoring.
 
+```csharp
 private static int GetIndexAfterFoundWord2(string text, string searchWord)
 {
-	int\[\] prefixTable = BuildPrefixTable(searchWord);
-	int\[\] found = SearchByKmp(text, searchWord, prefixTable);
+	int[] prefixTable = BuildPrefixTable(searchWord);
+	int[] found = SearchByKmp(text, searchWord, prefixTable);
 	return found.First() + searchWord.Length;
 }
+```
 
 Now the code is more intention revealing and the code is self-documenting (at this point, comments are redundant since the method name shows what each line does).
 
@@ -123,12 +127,14 @@ Let's wrap the KMP search logic in a class using [Extract Class](https://refacto
 
 Here is `GetIndexAfterFoundWord3` after 2nd refactoring.
 
+```csharp
 private static int GetIndexAfterFoundWord3(string text, string searchWord)
 {
 	KmpSearch kmpSearch = new KmpSearch();
-	int\[\] found = kmpSearch.Find(text, searchWord);
+	int[] found = kmpSearch.Find(text, searchWord);
 	return found.First() + searchWord.Length;
 }
+```
 
 Now KMP code can be reused and the abstraction level is the same. KMP algorithm is now reusable.
 
@@ -144,11 +150,13 @@ Open-Close Principle states that
 
 Here is `GetIndexAfterFoundWord4` after Extract Interface Refactoring.
 
+```csharp
 private static int GetIndexAfterFoundWord4(string text, string searchWord, ITextSearch textSearch)
 {
-	int\[\] found = textSearch.Find(text, searchWord);
+	int[] found = textSearch.Find(text, searchWord);
 	return found.First() + searchWord.Length;
 }
+```
 
 Now `GetIndexAfterFoundWord4` doesn't know **how** text search functionality is implemented. It just knows that `textSearch` returns an index and that's all `GetIndexAfterFoundWord4` has to know about.
 
@@ -160,7 +168,8 @@ Let me show you how easy it is to replace the algorithm.
 
 I created a class, `SlowSearch` that implements `ITextSearch`.
 
-public static void Main(string\[\] args)
+```csharp
+public static void Main(string[] args)
 {
 	string text = "This is a long text to be searched";
 	// A word to search within "text".
@@ -172,6 +181,7 @@ public static void Main(string\[\] args)
 	nextIndex = GetIndexAfterFoundWord4(text, searchWord, new SlowSearch());
 	Console.WriteLine("Result of GetIndexAfterFoundWord4 using SlowSearch = " + nextIndex);
 }
+```
 
 Both of them return the same result using different search algorithm.
 
@@ -182,21 +192,23 @@ I've implemented this demo in a console application so the method is static and 
 
 #### Last Refactoring
 
+```csharp
 public class IndexIterator
 {
-	private readonly ITextSearch \_textSearch;
+	private readonly ITextSearch _textSearch;
 
 	public IndexIterator(ITextSearch textSearch)
 	{
-		\_textSearch = textSearch;
+		_textSearch = textSearch;
 	}
 
 	public int GetIndexAfterFoundWord(string text, string searchWord)
 	{
-		int\[\] found = \_textSearch.Find(text, searchWord);
+		int[] found = _textSearch.Find(text, searchWord);
 		return found.First() + searchWord.Length;
 	}
 }
+```
 
 You can either mock out ITextSearch object instance in a test using a mock or pass an instance using a [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) using a framework like [Ninject](https://www.ninject.org/).
 

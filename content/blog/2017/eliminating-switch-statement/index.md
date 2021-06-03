@@ -52,7 +52,7 @@ We want to rid `switch` and there are two aspects to consider.
 
 For the first question, a hashtable/dictionary is a good fit because the time complexity for a key lookup is `O(1)`.
 
-For the latter, [a lambda/anonymous function](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions) would do the job. (I am using C#, which provides [Func<T, TResult>](https://msdn.microsoft.com/en-us/library/bb549151(v=vs.110).aspx)).
+For the latter, [a lambda/anonymous function](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions) would do the job. (I am using C#, which provides [`Func<T, TResult>`](https://msdn.microsoft.com/en-us/library/bb549151(v=vs.110).aspx)).
 
 We all the pieces in place, let's look at the version without the `switch` statement.
 

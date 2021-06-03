@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { readdir, readFile } from 'fs/promises';
@@ -26,7 +25,7 @@ async function getPostMetaListByYear(year) {
 	// const metadataList = Promise.all(metadataListPromise);
 	// return metadataList;
 
-	return metadataListPromise;
+	return await Promise.all(metadataListPromise);
 }
 
 async function getYears() {
@@ -41,31 +40,33 @@ export async function getStaticPaths() {
 }
 
 // export function getServerSideProps() {
-export async function getStaticProps() {
-	const blogDirectory = path.join(process.cwd(), 'content', 'blog');
+export async function getStaticProps({ params: { year } }) {
+	// const blogDirectory = path.join(process.cwd(), 'content', 'blog');
 	// const years = await getYears();
 
-	const postsFor2020 = await getPostMetaListByYear(2021);
-	const resolved = await Promise.all(postsFor2020);
+	// const postsFor2020 = await getPostMetaListByYear(2021);
+	// const resolved = await Promise.all(postsFor2020);
 
-	(async () => {
-		console.info({ postsFor2020: JSON.stringify(resolved, null, 2) });
-	})();
+	// (async () => {
+	// 	console.info({ postsFor2020: JSON.stringify(resolved, null, 2) });
+	// })();
+
+	const postList = await getPostMetaListByYear(year);
+	console.log({ postList });
 
 	return {
-		props: { cwd: process.cwd(), dirname: __dirname, blogDirectory }
+		// props: { cwd: process.cwd(), dirname: __dirname, blogDirectory, year }
+		props: { postList, year }
 	};
 }
 
-function YearBlock({ cwd, dirname, blogDirectory }) {
-	const router = useRouter();
-	const { year } = router.query;
-
+// function YearBlock({ cwd, dirname, blogDirectory, year }) {
+function YearBlock({ year, postList }) {
 	useEffect(
 		() => {
-			console.info({ cwd, dirname, blogDirectory });
+			console.info({ postList });
 		},
-		[ cwd, dirname, blogDirectory ]
+		[ postList ]
 	);
 
 	return (

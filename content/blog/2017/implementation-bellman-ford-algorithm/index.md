@@ -229,7 +229,7 @@ The _predecessor_ returned by the method, `GetPathInfoUsingBellmanFordAlgorithm`
 
 To find the shortest path, we need to traverse from the destination back to the source node.
 
-So when we start from 6th item(where index is 5 {[F,G]}), the value in the dictionary is "G". Next, we look for an item where "G" is the key in the predecessor. We find that the 7th item ({[G,E]}) has "G" as the key. Then iterate until we reach the source node, "A". Since we are traversing backward, it seems like a stack would do the job to return the result in LIFO order.
+So when we start from 6th item(where index is 5 {`[F,G]`}), the value in the dictionary is "G". Next, we look for an item where "G" is the key in the predecessor. We find that the 7th item ({[`G,E`]}) has "G" as the key. Then iterate until we reach the source node, "A". Since we are traversing backward, it seems like a stack would do the job to return the result in LIFO order.
 
 The implementation of a method that returns the shortest path looks like this.
 

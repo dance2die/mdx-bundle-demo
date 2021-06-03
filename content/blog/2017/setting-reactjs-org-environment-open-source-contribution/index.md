@@ -23,7 +23,7 @@ I'd like to show you how to get ReactJS.org page up and running on Windows 10.
     1. Go to [ReactJS.org GitHub page](https://github.com/reactjs/reactjs.org/).
     2. Create a new fork by clicking on the `Fork` button on the right.![](./images/create-a-fork.png)
 2. Go to newly created fork
-    1. https://github.com/<<YOUR\_GITHUB\_ID>>/reactjs.org/
+    1. `https://github.com/<<YOUR\_GITHUB\_ID>>/reactjs.org/`
 3. Clone the fork
     1. by copying the repository path and,
         1. ![](./images/clone-with-https.png)

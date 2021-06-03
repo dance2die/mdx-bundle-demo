@@ -16,7 +16,7 @@ I found out a solution and I'd like to share how.
 
 Here is a simple ASP.NET MVC controller that accepts IRepository object instance. "Index" simply returns a view with "HomeIndexViewModel", which accepts a connection string from the repository (this is a very contrived example).
 
-<!-- prettier-ignore -->
+
 ```csharp
 public class HomeController : Controller
 {

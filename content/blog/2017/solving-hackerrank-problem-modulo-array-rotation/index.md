@@ -15,9 +15,10 @@ It was exactly the situation where I can apply the concept I wrote about in [AWE
 
 I tried to solve it by rotating it the number of times entered by the user, but the tests were failing for very large input data. Here is the initial implementation.
 
-private static int\[\] RotateRightNTimes(int\[\] a, int k)
+```csharp
+private static int[] RotateRightNTimes(int[] a, int k)
 {
-	int\[\] result = a;
+	int[] result = a;
 	for (int rotateIndex = 0; rotateIndex < k; rotateIndex++)
 	{
 		result = RotateRightOnce(result);
@@ -26,33 +27,36 @@ private static int\[\] RotateRightNTimes(int\[\] a, int k)
 	return result;
 }
 
-private static int\[\] RotateRightOnce(int\[\] a)
+private static int[] RotateRightOnce(int[] a)
 {
-	int\[\] result = new int\[a.Length\];
+	int[] result = new int[a.Length];
 
 	for (int i = 0; i < a.Length; i++)
 	{
-		result\[(i + 1) % a.Length\] = a\[i\];
+		result[(i + 1) % a.Length] = a[i];
 	}
 
 	return result;
 }
+```
 
 As shown above, it's very naive implementation of rotating. If I had thought this through, I could have made it faster from the get-go by adding the number of positions to rotate instead of adding 1 in line 18 (`result[(i + 1) % a.Length]`).
 
 My second approach was just as I describe above and just add number of rotation count.
 
-private static int\[\] RotateRightNTimes2(int\[\] a, int rotateCount)
+```csharp
+private static int[] RotateRightNTimes2(int[] a, int rotateCount)
 {
-	int\[\] result = new int\[a.Length\];
+	int[] result = new int[a.Length];
 
 	for (int i = 0; i < a.Length; i++)
 	{
-		result\[(i + rotateCount) % a.Length\] = a\[i\];
+		result[(i + rotateCount) % a.Length] = a[i];
 	}
 
 	return result;
 }
+```
 
 Now there is only one method and now it takes **O(n)** to rotate instead of **O(N^2)**.
 
