@@ -22,7 +22,7 @@ _If you are having trouble with React Router, check out_ [_Page Not Found on Net
 
 ## How did the error occur?
 
-MDX-Deck (version <= 2 is based on [create-react-app](https://facebook.github.io/create-react-app/) while v3 is based on [Gatsby](https://www.gatsbyjs.org/)) routing is handled on client-side while Netlify (server-side) does not know how to handle the route.
+MDX-Deck (`version <= 2` is based on [create-react-app](https://facebook.github.io/create-react-app/) while v3 is based on [Gatsby](https://www.gatsbyjs.org/)) routing is handled on client-side while Netlify (server-side) does not know how to handle the route.
 
 ## How can we fix it?
 

@@ -80,7 +80,7 @@ Thankfully, GitHub provides a way to [create secret environment variables](https
 
 You now need to declare the environment variables, and pass it to the CLI.
 
-<!-- prettier-ignore -->
+
 ```yaml
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

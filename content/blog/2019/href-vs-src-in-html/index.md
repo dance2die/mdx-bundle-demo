@@ -61,7 +61,7 @@ There you have it. The convenience factor has won over. 😃
 
 ## Additional History - HTTP Referer
 
-After sharing the Twitter thread in [useReactNYC](https://usereact.nyc/) (a React Meetup in NYC) slack workspace, [Donavon](https://twitter.com/donavon) (one of the useReactNYC hosts and an active React community educator who loves to {...💖}) has shared a link on how an HTTP header `referer` (note it's not spelled as "referrer", missing one "r") [misspelling came about](https://en.wikipedia.org/wiki/HTTP_referer).
+After sharing the Twitter thread in [useReactNYC](https://usereact.nyc/) (a React Meetup in NYC) slack workspace, [Donavon](https://twitter.com/donavon) (one of the useReactNYC hosts and an active React community educator who loves to `{...💖}`) has shared a link on how an HTTP header `referer` (note it's not spelled as "referrer", missing one "r") [misspelling came about](https://en.wikipedia.org/wiki/HTTP_referer).
 
 _**SPOILER**: An old spell checker didn't catch it._
 
