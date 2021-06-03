@@ -83,7 +83,7 @@ Now the question is, there is no property in the first place to set to in `click
 OK, I've used a bit of JavaScript weirdness to set the clicked state of currently selected item.  
 I won't go into too much details as JavaScript's truthiness gets **very** hairy 😠💢.  
   
-_So I refer you to this article,_ [Mastering JavaScript’s && and || logical operators](https://blog.usejournal.com/mastering-javascripts-and-logical-operators-fd619b905c8f) by [Nicolas Marcora](https://blog.usejournal.com/@nicolasmarcora) _if you want more details._  
+_So I refer you to this article,_ [`Mastering JavaScript’s && and || logical operators`](https://blog.usejournal.com/mastering-javascripts-and-logical-operators-fd619b905c8f) by [Nicolas Marcora](https://blog.usejournal.com/@nicolasmarcora) _if you want more details._  
 
 But what you need to know is that **`!undefined` returns true.**
 
@@ -98,7 +98,7 @@ And `!clicked[i]` will be `undefined` and negating it with `!` operator will tur
 
 Negating undefined
 
-`clicked` object will have an item with value of `1` as the key and the on/off state as the value.
+`clicked` object will have an item with value of `1` as the key and the `on/off` state as the value.
 
 Now let's get back to the previous question, why use an _object_ instead of an _array_ to keep a track of clicked states?
 
@@ -112,7 +112,7 @@ Suppose that we declared `state = { clicked: []}`, then setting a value above fi
 
 Wasted memory
 
-I've set a value for the 4th item, `clicked[3] = !clicked[3];` and the array ended up adding the `!clicked[3]` value with `undefined` (<3 empty slots>) for first 3 items.
+I've set a value for the 4th item, `clicked[3] = !clicked[3];` and the array ended up adding the `!clicked[3]` value with `undefined` (3 empty slots) for first 3 items.
 
 ![](./images/sandbox.png)
 

@@ -37,7 +37,7 @@ So if someone has modified one of the items in `comments` array, you have to tra
 
 It's an `O(n)` operation process thus it's slow 🦄.
 
-But if you had returned a new `comments` array (using Object.assign or object spread, {...}) then reference has changed, thus you know that something has changed.
+But if you had returned a new `comments` array (using Object.assign or object spread, `{...}`) then reference has changed, thus you know that something has changed.
 
 Now it's an `O(1)` operation, blazing fast 🏎.
 
@@ -50,7 +50,7 @@ You can still override [shouldComponentUpdate](https://reactjs.org/docs/react-co
 ## Resources
 
 - [Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html) - Official React Documentation
-- [\[Weekend Reads\] React Docs on Optimizing Performance](https://www.reddit.com/r/reactjs/comments/a1y5ej/weekend_reads_react_docs_on_optimizing_performance/)
+- [Weekend Reads - React Docs on Optimizing Performance](https://www.reddit.com/r/reactjs/comments/a1y5ej/weekend_reads_react_docs_on_optimizing_performance/)
 - [Immutable User Interface](https://vimeo.com/album/3953264/video/166790294) - Lee Byron in Render 2018
   - Haven't finished watching it, yet
   - Just found it from [Dan's tweet](https://twitter.com/dan_abramov/status/735530699231531008).
