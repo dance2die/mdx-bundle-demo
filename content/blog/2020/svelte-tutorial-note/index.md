@@ -1495,17 +1495,17 @@ function App() {
 
 ## 16. Special elements
 
-### a. <svelte:self>
+### a. `<svelte:self>`
 
 https://svelte.dev/tutorial/svelte-self
 
 To recursively refer the current component.
 
 There is a typo in the documentation so filed an issue: https://github.com/sveltejs/svelte/issues/5044  
-**Update**: ["a file" refers to the current file, not the `File` component](https://github.com/sveltejs/svelte/issues/5044#issuecomment-647046475). So the documentation is correct. Clsoed the issue.
+**Update**: ["a file" refers to the current file, not the File component](https://github.com/sveltejs/svelte/issues/5044#issuecomment-647046475). So the documentation is correct. Clsoed the issue.
 
 
-### b. <svelte:component>
+### b. `<svelte:component>`
 
 https://svelte.dev/tutorial/svelte-component
 
@@ -1535,32 +1535,32 @@ e.g.) `RedThing.svelte`
 <strong>{text}</strong>
 ```
 
-### c. <svelte:window>
+### c. `<svelte:window>`
 
 https://svelte.dev/tutorial/svelte-window
 
 It's a declarative way to add events to `window` object.
 
-### d. <svelte:window> bindings
+### d. `<svelte:window>` bindings
 
 https://svelte.dev/tutorial/svelte-window-bindings
 
 Turns out, you can also bind to some of `window`'s properties, not just events.
 
-### e. <svelte:body>
+### e. `<svelte:body>`
 
 https://svelte.dev/tutorial/svelte-body
 
 This lets you bind events declaratively in the `document.body`.
 
-### f. <svelte:head>
+### f. `<svelte:head>`
 
 https://svelte.dev/tutorial/svelte-head
 
 Injecting content inside `<html><head>`.  
 No need for `react-helmet` like 3rd party library.
 
-### g. <svelte:options>
+### g. `<svelte:options>`
 
 https://svelte.dev/tutorial/svelte-options
 
